@@ -36,7 +36,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="d-none d-sm-block"><a href="/" class="navbar-brand mx-auto d-block text-center w-100"><img id="logo" src="/images/ngrader.png"></img></a></div>
+           <!--- <div class="d-none d-sm-block"><a href="/" class="navbar-brand mx-auto d-block text-center w-100"><img id="logo" src="/images/ngrader.png"></img></a></div> -->
             <div class="navbar-collapse collapse dual-nav w-100">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
@@ -58,14 +58,14 @@
                 <p class="desc-text">
                     Hundreds of problems are waiting for you<br>
                     to improve your programming skill.<br><br>
-                    No registration required. So, Try now for free!
+                    Register and Try now for free!
                 </p>
             </div>
             <div id="console-bar"></div>
             <div id="console-bg"></div>
             <div class="home-btn-group">
                 <a class="btn btn-secondary" href="/problems" role="button">Try it out</a>
-                <a class="btn btn-secondary" href="./register.html" role="button">Register</a>
+                <a class="btn btn-secondary" href="{% url 'users-register' %}" role="button">Register</a>
             </div>
         </div>
         <div class="container-fluid homepage-block">
@@ -74,7 +74,7 @@
                 <div style="padding: 5px;">
                 </div>
                 <p>We use Judge0 API for code compilation that<br>supports a lot of programming languages.</p>
-                <button class="btn btn-primary" id="lang-hide-btn">View all supported languages</button>
+                <button class="btn btn-primary" id="lang-hide-btn">View few supported languages</button>
                 <div class="lang-hide" style="margin-top: 30px;">
                         <button class="btn btn-secondary lang-desc">C</button>
                         <button class="btn btn-secondary lang-desc">C++</button>
@@ -86,8 +86,8 @@
         </div>
         <div class="container-fluid homepage-block gray">
             <h4 style="color: black;">It's open source!</h4>
-            <p class="scp">So check out the repository on GitHub if you<br>
-                wanna upgrade your coding skill...
+            <p class="scp"><br>
+                Wanna upgrade your coding skill...
             </p>
             <div style="width: 50%;margin: auto;">
                 <a class="btn btn-secondary" style="margin-top: 15px;" href="#" target="_blank">I'm in!</a>
