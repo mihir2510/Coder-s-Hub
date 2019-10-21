@@ -177,7 +177,7 @@ exports.post_submission_live_editor = function(req, res, next) {
         for(var i=0;i<test_res.cases.length;i++) {
             options.push({
                 method: 'POST',
-                uri: 'https://api.judge0.com/submissions/?base64_encoded=false&wait=true',
+                uri: 'https://api.judge0.com/submissions/?base64_encoded=false',
                 body: {
                     "source_code": req.body.sourcecode,
                     "language_id": parseInt(req.body.lang),
@@ -190,7 +190,44 @@ exports.post_submission_live_editor = function(req, res, next) {
             });
         }
         const promises = options.map(opt => request(opt));
-        Promise.all(promises).then((data) => {
+
+
+        // const functionWithPromise = async item => { //a function that returns a promise
+        //     return await request({
+        //         method: 'GET',
+        //         uri: `https://api.judge0.com/submissions/${item['token']}?base64_encoded=false`,
+        //         json: true
+        //     });
+        // }
+        //
+        // const getData = async (arr) => {
+        //     return await Promise.all(arr.map(item => functionWithPromise(item)))
+        // }
+
+        var syncRequest = require('sync-request');
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        const requestmap = function(item) {
+            for(let i=0; i<2000000000; i++){
+
+            }
+            let res = syncRequest('GET',
+            `https://api.judge0.com/submissions/${item['token']}?base64_encoded=false`
+            );
+            return JSON.parse(res.getBody('utf8'));
+        }
+
+        Promise.all(promises)
+        .then((tokens) => {
+            console.log('data with tokens',tokens);
+            // getData(tokens).then(data => {
+            //     console.log(data);
+            //     get_result(data, req.body.sourcecode);
+
+            var data = tokens.map((item) => requestmap(item))
+            console.log('sync stuff',data);
             get_result(data, req.body.sourcecode);
         });
     });
