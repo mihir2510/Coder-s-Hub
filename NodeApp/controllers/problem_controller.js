@@ -210,12 +210,14 @@ exports.post_submission_live_editor = function(req, res, next) {
         }
 
         const requestmap = function(item) {
-            for(let i=0; i<2000000000; i++){
+            for(let i=0; i<7500000000; i++){ //2*10^9
 
             }
+            // await sleep(2000);
             let res = syncRequest('GET',
-            `https://api.judge0.com/submissions/${item['token']}?base64_encoded=false`
+            `https://api.judge0.com/submissions/${item['token']}?base64_encoded=true`
             );
+            console.log('This is res: ',res);
             return JSON.parse(res.getBody('utf8'));
         }
 
