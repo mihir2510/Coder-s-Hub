@@ -5,28 +5,28 @@ var Submission = require('../models/submission');
 var Announcement = require('../models/announcement');
 
 exports.get_admin = function(req, res) {
-    //if (req.user && req.user.permission === 'admin') {
+    if (req.user && req.user.permission === 'admin') {
         Submission.find({}, function(err, sub_res) {
             Problem.find({}, function(err, prob_res) {
-                // console.log('User is',req.user, 'submission is',sub_res,'problem is',prob_res);
+                console.log('User is',req.user, 'submission is',sub_res,'problem is',prob_res);
                 res.render('admin', {user: req.user, submission: sub_res, problem: prob_res});
             })
         })
-    //} else {
-    //    res.send("You don't have permission to access this page.");
-    //}
+    } else {
+       res.send("You don't have permission to access this page.");
+    }
 };
 
 exports.get_new_problem = function(req, res) {
-    //if (req.user && req.user.permission === 'admin') {
+    if (req.user && req.user.permission === 'admin') {
         res.render('newprob', {user: req.user});
-    //} else {
-    //    res.send("You don't have permission to access this page.");
-    //}
+    } else {
+       res.send("You don't have permission to access this page.");
+    }
 };
 
 exports.post_new_problem = function(req, res) {
-    //if (req.user && req.user.permission === 'admin') {
+    if (req.user && req.user.permission === 'admin') {
         //console.log(req.body);
         if (!req.body.hasOwnProperty('test-input')) {
             res.render('error', {user: req.user, message: 'Empty testcase'});
@@ -70,9 +70,9 @@ exports.post_new_problem = function(req, res) {
             }
         })
 
-    //} else {
-    //    res.send("You don't have permission to access this page.");
-    //}
+    } else {
+       res.send("You don't have permission to access this page.");
+    }
 };
 
 exports.preview_problem = function(req, res) {

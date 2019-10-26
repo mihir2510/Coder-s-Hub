@@ -67,7 +67,7 @@
                         <p>Code Editor</p>
                         <select class="form-control-sm" id="submit-lang-live">
                             <% for(var i=0;i<langlist.length;i++) { %>
-                                <option value="<%= langlist[i].id %>" 
+                                <option value="<%= langlist[i].id %>"
                                     <% if(submitLang == langlist[i].id || (submitLang == null && langlist[i].id == 10)) { %>
                                         selected="selected"
                                     <% } %>
@@ -104,7 +104,8 @@
                 </div>
                 <div class="col-md-6 col-xs-12">
                     <p>Output</p>
-                    <textarea id="live-result" readonly></textarea>
+                    <%= console.log(result) %>
+                    <textarea id="live-result" readonly><%= (result==null) ? '' : Buffer.from(result.stdout, 'base64').toString('binary') %></textarea>
                 </div>
             </div>
         </div>
@@ -132,12 +133,17 @@
                 type: 'POST'
             }).done(function(res) {
                 console.log(res)
+                console.log('Value is',res.stderr,res.compile_output);
                 if (res.stderr !== null) {
                     $('#live-result').css('color', 'red');
-                    $('#live-result').val(res.stderr)
+                    res.stderr = (res.stderr == null) ? '' : res.stderr;
+                    res.compile_output = (res.compile_output == null) ? '' : res.compile_output;
+                    console.log('Value is',res.stderr,res.compile_output);
+                    $('#live-result').val(atob(res.stderr+'\n'+res.compile_output));
                 } else {
                     $('#live-result').css('color', 'white');
-                    $('#live-result').val(res.stdout)
+                    // console.log(Buffer.from(result.stdout, 'base64').toString('binary'));
+                    $('#live-result').val(atob(res.stdout))
                 }
                 $('#submit-btn').html('Submit')
                 $('#submit-btn').prop('disabled', false)
