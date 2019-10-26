@@ -8,6 +8,7 @@ exports.get_admin = function(req, res) {
     //if (req.user && req.user.permission === 'admin') {
         Submission.find({}, function(err, sub_res) {
             Problem.find({}, function(err, prob_res) {
+                // console.log('User is',req.user, 'submission is',sub_res,'problem is',prob_res);
                 res.render('admin', {user: req.user, submission: sub_res, problem: prob_res});
             })
         })
@@ -68,7 +69,7 @@ exports.post_new_problem = function(req, res) {
                 });
             }
         })
-        
+
     //} else {
     //    res.send("You don't have permission to access this page.");
     //}
