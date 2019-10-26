@@ -5,6 +5,23 @@ var Problem = require('../models/problem');
 var Testcase = require('../models/testcase');
 var Submission = require('../models/submission');
 var Announcement = require('../models/announcement');
+var syncRequest = require('sync-request');
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const requestmap = function(item) {
+    for(let i=0; i<7500000000; i++){ //2*10^9
+
+    }
+    // await sleep(2000);
+    let res = syncRequest('GET',
+    `https://api.judge0.com/submissions/${item['token']}?base64_encoded=true`
+    );
+    console.log('This is res: ',res);
+    return JSON.parse(res.getBody('utf8'));
+}
+
 
 exports.get_all_problem = function(req, res) {
     Problem.find({avail: true}, function(err,problem) {
@@ -104,7 +121,7 @@ exports.post_submission = function(req, res, next) {
             for(var i=0;i<test_res.cases.length;i++) {
                 options.push({
                     method: 'POST',
-                    uri: 'https://api.judge0.com/submissions/?base64_encoded=false&wait=true',
+                    uri: 'https://api.judge0.com/submissions/?base64_encoded=false',
                     body: {
                         "source_code": sourcecode,
                         "language_id": parseInt(req.body.lang),
@@ -117,10 +134,24 @@ exports.post_submission = function(req, res, next) {
                 });
             }
             const promises = options.map(opt => request(opt));
-            Promise.all(promises).then((data) => {
-                get_result(data, sourcecode);
+
+            Promise.all(promises)
+            .then((tokens) => {
+                console.log('data with tokens',tokens);
+                // getData(tokens).then(data => {
+                //     console.log(data);
+                //     get_result(data, req.body.sourcecode);
+
+                var data = tokens.map((item) => requestmap(item))
+                console.log('sync stuff',data);
+                get_result(data, req.body.sourcecode);
                 fs.unlink(req.file.path);
             });
+
+            // Promise.all(promises).then((data) => {
+            //     get_result(data, sourcecode);
+            //     fs.unlink(req.file.path);
+            // });
         });
     });
 };
@@ -204,22 +235,22 @@ exports.post_submission_live_editor = function(req, res, next) {
         //     return await Promise.all(arr.map(item => functionWithPromise(item)))
         // }
 
-        var syncRequest = require('sync-request');
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-        const requestmap = function(item) {
-            for(let i=0; i<7500000000; i++){ //2*10^9
-
-            }
-            // await sleep(2000);
-            let res = syncRequest('GET',
-            `https://api.judge0.com/submissions/${item['token']}?base64_encoded=true`
-            );
-            console.log('This is res: ',res);
-            return JSON.parse(res.getBody('utf8'));
-        }
+        // var syncRequest = require('sync-request');
+        // function sleep(ms) {
+        //     return new Promise(resolve => setTimeout(resolve, ms));
+        // }
+        //
+        // const requestmap = function(item) {
+        //     for(let i=0; i<7500000000; i++){ //2*10^9
+        //
+        //     }
+        //     // await sleep(2000);
+        //     let res = syncRequest('GET',
+        //     `https://api.judge0.com/submissions/${item['token']}?base64_encoded=true`
+        //     );
+        //     console.log('This is res: ',res);
+        //     return JSON.parse(res.getBody('utf8'));
+        // }
 
         Promise.all(promises)
         .then((tokens) => {
@@ -242,7 +273,7 @@ exports.get_custom_test = function(req, res) {
 exports.post_custom_test_live = function(req, res) {
     var options = {
         method: 'POST',
-        uri: 'https://api.judge0.com/submissions/?base64_encoded=false&wait=true',
+        uri: 'https://api.judge0.com/submissions/?base64_encoded=false',
         body: {
             "source_code": req.body.sourcecode,
             "language_id": parseInt(req.body.lang),
@@ -251,7 +282,7 @@ exports.post_custom_test_live = function(req, res) {
         json: true
     };
     request(options, function(err, result, body) {
-        console.log(body);
+        console.log('daaaamnnnn, this is',body);
         res.cookie('submitLang' , req.body.lang, { expires: new Date(Date.now() + 2592000000) });
         res.render('custom_test', {user: req.user, submitLang: req.cookies.submitLang, langlist: lang, result: body, request: {stdin: req.body.input, sourcecode: req.body.sourcecode}});
     });
