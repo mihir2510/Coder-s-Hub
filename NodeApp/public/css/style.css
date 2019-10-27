@@ -91,12 +91,16 @@ footer {
 }
 
 .navbar-default .nav > li > a:hover {
-    color: var(--pmedium);
+    color: var(--pdarker);
 }
 
 .navbar-default .nav > li.active > a {
+    color: var(--pmedium);
+}
+.navbar-default .nav > li.active > a:hover {
     color: var(--pdarker);
 }
+
 
 /* Homepage */
 
