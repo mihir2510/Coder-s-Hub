@@ -8,6 +8,8 @@ router.get('/', function(req, res) {
     res.render('index', {user: req.user});
 });
 
+
+
 router.get('/login', auth_controller.get_login);
 
 router.post('/login', auth_controller.post_login);

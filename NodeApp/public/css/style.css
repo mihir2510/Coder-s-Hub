@@ -138,7 +138,7 @@ footer {
 
 .desc-text {
     color: white;
-    font-size: 1vw;
+    font-size: 1.2vw;
 
     overflow: hidden; /* Ensures the content is not revealed until the animation */
  
