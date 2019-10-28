@@ -109,7 +109,8 @@ footer {
     position: relative;
     padding: 50px;
     height: calc(100vh - 61px);
-    background-image: linear-gradient(135deg,	#FFEB00
+    background-image: linear-gradient(135deg,
+    #FFEB00
     ,#FF355E)
 }
 
