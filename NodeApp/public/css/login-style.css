@@ -1,5 +1,5 @@
 body {
-    background: url('http://i.imgur.com/Eor57Ae.jpg') no-repeat fixed center center;
+    background: url('/images/login.jpg') no-repeat fixed center center;
     background-size: cover;
     font-family: 'Lato', sans-serif;
 }
@@ -102,3 +102,15 @@ body {
     color: #19d8b8;
 }
 
+footer {
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px;
+    background-color: var(--tdarker);
+    color: white;
+    text-align: center;
+    font-size: 2vh;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+}
