@@ -76,6 +76,8 @@ footer {
     background-color: black;
     background-image: none;
     background-repeat: no-repeat;
+    font-size:1.8vh;
+    padding: 1.5rem;
 }
 
 .navbar-default .navbar-brand {
@@ -434,7 +436,9 @@ footer {
     position: relative;
     display: flex;
   }
-  
+   <footer style="margin-top: 30%;margin-left:45%;font-size: 1.2rem;color: white;position:fixed;">
+                <p>© 2019 Coder'sHub</p>
+            </footer>
   .searchTerm {
     width: 100%;
     border: 3px solid #00B4CC;
@@ -460,7 +464,9 @@ footer {
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
-  }
+  } <footer style="margin-top: 30%;margin-left:45%;font-size: 1.2rem;color: white;position:fixed;">
+                <p>© 2019 Coder'sHub</p>
+            </footer>
   
   Resize the wrap to see the search bar change!
   .wrap{
