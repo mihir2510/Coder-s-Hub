@@ -19,6 +19,7 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 0 0 100px;
+    
 }
 
 .homepage {
@@ -56,7 +57,7 @@ footer {
 }
 
 #logo {
-    width: 102px;
+    width: 85px;
     height: 35px;
 }
 
@@ -78,7 +79,7 @@ footer {
     background-image: none;
     background-repeat: no-repeat;
     font-size:2.2vh;
-    padding: 1.2rem;
+    padding: 10px;
     
 }
 
@@ -92,6 +93,7 @@ footer {
 
 .navbar-default .nav > li > a {
     color:var(--pmedium);
+    font-weight:900;
 }
 
 .navbar-default .nav > li > a:hover {
