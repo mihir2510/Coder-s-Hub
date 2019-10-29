@@ -67,9 +67,10 @@ footer {
 }
 
 .homepage .navbar-default {
-    background-color: black;
+    background-color: white;
     background-image: none;
     background-repeat: no-repeat;
+
 }
 
 .navbar-default {
@@ -78,6 +79,7 @@ footer {
     background-repeat: no-repeat;
     font-size:1.8vh;
     padding: 1.5rem;
+    
 }
 
 .navbar-default .navbar-brand {
@@ -112,8 +114,8 @@ footer {
     padding: 50px;
     height: calc(100vh - 61px);
     background-image: linear-gradient(135deg,
-    #FFEB00
-    ,#FF355E)
+    #FFF700
+    ,#FD0E35)
 }
 
 .header-body {
@@ -127,7 +129,7 @@ footer {
     border-bottom: solid 2px black;
     border-width: 3px;
     padding: 4px 10px;
-    font-size:3.2rem ;
+    font-size: 3.5rem ;
 }
 
 .header-desc {
