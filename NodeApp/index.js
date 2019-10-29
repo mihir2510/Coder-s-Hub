@@ -43,6 +43,7 @@ var admin_route = require('./routes/admin');
 var problem_route = require('./routes/problem');
 var api_route = require('./routes/api');
 var leaderboard_route = require('./routes/leaderboard');
+var aboutus_route = require('./routes/aboutus');
 
 app.use('/', index_route);
 app.use('/admin', admin_route);

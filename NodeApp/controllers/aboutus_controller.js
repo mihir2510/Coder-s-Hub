@@ -1,6 +1,4 @@
 
-
-exports.get_aboutus = function(res) {
-   
-    res.redirect('/aboutus');
+exports.get_aboutus = function(req, res) {
+    res.render('aboutus',{user:req.user});
 };
