@@ -50,7 +50,7 @@
 <br>
 <img src="assets/profile.jpeg" width=700px>
 <br>
-<img src="assets/IDE.png" width=700px>
+<img src="assets/IDE.PNG" width=700px>
 <br>
 
 </div>
