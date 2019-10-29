@@ -1,6 +1,6 @@
 var passport = require('passport')
 var Account = require('../models/account');
-
+/*
 exports.fb_login = function(req, res) {
     passport.authenticate('facebook');
 };
@@ -11,7 +11,7 @@ exports.fb_login_cb = function(req, res) {
         failureRedirect: '/' 
     });
 };
-
+*/
 exports.post_register = function(req, res) {
     var acc = new Account({ 
         username : req.body.username, 
