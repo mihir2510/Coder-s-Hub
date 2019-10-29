@@ -8,7 +8,7 @@ var Account = new Schema({
     email: String,
     permission: String,
     rating: Number,
-    problems_solved: [Number]
+    problems_solved: {}
 });
 
 Account.plugin(passportLocalMongoose);

@@ -60,7 +60,7 @@
                         </div>
                      </div>
 
-              --> 
+              -->
 
 
             <% if (announcement.length) { %>
@@ -117,98 +117,96 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
-            let getCookie = function(cname) {
-                var name = cname + "=";
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-                console.log('In cookie, ca is',ca,'cookie is',document.cookie);
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
+    $(document).ready(function() {
+    let getCookie = function(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
             }
-            let solved_pid = getCookie('solved_pid').split(',');
-            console.log(solved_pid);
-            let problemList;
-            $('#problem-list').hide();
-            let showProblem = function(res) {
-                console.log('Show problem',res);
-                let html = '';
-                let count = 0;
-                const diff_color = ['#2dc937', '#e7b416', '#cc3232']; //[green, yellow, red]
-                const solved_color = "#bbb";
-                res.forEach(function(e) {
-                    console.log('Inside for each',e);
-                    html += '<div class="problem-box" style="border-left-color: ' + (solved_pid.indexOf(e.pid.toString()) == -1 ? diff_color[e.difficulty] : solved_color) + ';" id="box-' + count + '">'
-                    html += '<a class="problem-name" href="/problems/' + e.pid + '">' + e.name + '</a><div class="badge-group">';
-                    e.tags.forEach(function(tag) {
-                        html += '<a href="/problems/tag/' + tag.replace(' ','_') + '" class="badge badge-default">' + tag + '</a> '
-                    })
-                    html += '</div><div class="solved-count">Solved <i class="far fa-check-circle"></i> <b>' + e.solved + '</b></div>';
-                    html += '<div class="solve-btn"><a role="button" class="btn btn-primary" href="/problems/' + e.pid + '">' + "Let's solve" + '</a></div>';
-                    html += '<div class="ignore-btn" id="ignore-' + count++ + '">x</div>'
-                    html += '</div>'
-                })
-                $('#problem-grid').html(html);
-                let htmlListView = '<table class="table table-hover"><thead><tr><th scope="col">#</th><th scope="col">Problem Name</th><th scope="col">Tags</th> \
-                                <th scope="col">Solved</th></tr></thead><tbody>';
-                res.forEach(function(e) {
-                    htmlListView += '<tr><th scope="row" style="color: ' + diff_color[e.difficulty] + '">' + e.pid + '</th>'
-                    htmlListView += '<td><a href="/problems/' + e.pid + '">' + e.name + '</a></td><td>';
-                    e.tags.forEach(function(tag) {
-                        htmlListView += '<a href="/problems/tag/' + tag.replace(' ','_') + '" class="badge badge-default">' + tag + '</a> '
-                    })
-                    htmlListView += '</td><td>' + e.solved
-                    htmlListView += '</td></tr>'
-                })
-                htmlListView += '</tbody></table>'
-                $('#problem-list').html(htmlListView);
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
             }
-            $.getJSON('/api/problems', function(res) {
-                problemList = res;
-                showProblem(res);
+        }
+        return "";
+    }
+    let solved_pid = getCookie('solved_pid').split(',');
+    //console.log(solved_pid);
+    let problemList;
+    $('#problem-list').hide();
+    let showProblem = function(res) {
+        let html = '';
+        let count = 0;
+        const diff_color = ['#2dc937', '#e7b416', '#cc3232']; //[green, yellow, red]
+        const solved_color = "#bbb";
+        res.forEach(function(e) {
+            html += '<div class="problem-box" style="border-left-color: ' + (solved_pid.indexOf(e.pid.toString()) == -1 ? diff_color[e.difficulty] : solved_color) + ';" id="box-' + count + '">'
+            html += '<a class="problem-name" href="/problems/' + e.pid + '">' + e.name + '</a><div class="badge-group">';
+            e.tags.forEach(function(tag) {
+                html += '<a href="/problems/tag/' + tag.replace(' ','_') + '" class="badge badge-default">' + tag + '</a> '
             })
-            $('#filter-all').on('click', function() {
-                showProblem(problemList);
+            html += '</div><div class="solved-count">Solved <i class="far fa-check-circle"></i> <b>' + e.solved + '</b></div>';
+            html += '<div class="solve-btn"><a role="button" class="btn btn-primary" href="/problems/' + e.pid + '">' + "Let's solve" + '</a></div>';
+            html += '<div class="ignore-btn" id="ignore-' + count++ + '">x</div>'
+            html += '</div>'
+        })
+        $('#problem-grid').html(html);
+        let htmlListView = '<table class="table table-hover"><thead><tr><th scope="col">#</th><th scope="col">Problem Name</th><th scope="col">Tags</th> \
+                        <th scope="col">Solved</th></tr></thead><tbody>';
+        res.forEach(function(e) {
+            htmlListView += '<tr><th scope="row" style="color: ' + diff_color[e.difficulty] + '">' + e.pid + '</th>'
+            htmlListView += '<td><a href="/problems/' + e.pid + '">' + e.name + '</a></td><td>';
+            e.tags.forEach(function(tag) {
+                htmlListView += '<a href="/problems/tag/' + tag.replace(' ','_') + '" class="badge badge-default">' + tag + '</a> '
             })
-            $('#filter-easy').on('click', function() {
-                showProblem(problemList.filter(function(e) {
-                    return e.difficulty === 0;
-                }))
-            })
-            $('#filter-medium').on('click', function() {
-                showProblem(problemList.filter(function(e) {
-                    return e.difficulty === 1;
-                }))
-            })
-            $('#filter-hard').on('click', function() {
-                showProblem(problemList.filter(function(e) {
-                    return e.difficulty === 2;
-                }))
-            })
-            $('#toggle-grid').on('click', function() {
-                $('#problem-grid').show();
-                $('#problem-list').hide();
-                $('#toggle-grid').css("color", "black");
-                $('#toggle-list').css("color", "gray");
-            })
-            $('#toggle-list').on('click', function() {
-                $('#problem-grid').hide();
-                $('#problem-list').show();
-                $('#toggle-grid').css("color", "gray");
-                $('#toggle-list').css("color", "black");
-            })
-            $(document).on('click', '.ignore-btn', function() {
-                $('#box-' + this.id.substring(7)).hide();
-                console.log('#box-' + this.id.substring(7));
-            })
-        });
+            htmlListView += '</td><td>' + e.solved
+            htmlListView += '</td></tr>'
+        })
+        htmlListView += '</tbody></table>'
+        $('#problem-list').html(htmlListView);
+    }
+    $.getJSON('/api/problems', function(res) {
+        problemList = res;
+        // console.log('result is',res);
+        showProblem(res);
+    })
+    $('#filter-all').on('click', function() {
+        showProblem(problemList);
+    })
+    $('#filter-easy').on('click', function() {
+        showProblem(problemList.filter(function(e) {
+            return e.difficulty === 0;
+        }))
+    })
+    $('#filter-medium').on('click', function() {
+        showProblem(problemList.filter(function(e) {
+            return e.difficulty === 1;
+        }))
+    })
+    $('#filter-hard').on('click', function() {
+        showProblem(problemList.filter(function(e) {
+            return e.difficulty === 2;
+        }))
+    })
+    $('#toggle-grid').on('click', function() {
+        $('#problem-grid').show();
+        $('#problem-list').hide();
+        $('#toggle-grid').css("color", "black");
+        $('#toggle-list').css("color", "gray");
+    })
+    $('#toggle-list').on('click', function() {
+        $('#problem-grid').hide();
+        $('#problem-list').show();
+        $('#toggle-grid').css("color", "gray");
+        $('#toggle-list').css("color", "black");
+    })
+    $(document).on('click', '.ignore-btn', function() {
+        $('#box-' + this.id.substring(7)).hide();
+        console.log('#box-' + this.id.substring(7));
+    })
+});
     </script>
 </html>

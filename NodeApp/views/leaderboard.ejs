@@ -31,7 +31,7 @@
                         <a class="nav-link" href="/custom">IDE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">LeaderBoard</a>
+                        <a class="nav-link" href="#">Leaderboard</a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +49,7 @@
             </div>
         </nav>
 <div class="container">
-  <h2>LeaderBoard</h2>
+  <h2>Leaderboard</h2>
   <!-- <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p> -->
   <table class="table table-condensed">
     <thead>
@@ -64,7 +64,7 @@
         <tr>
             <td><%= i+1 %></td>
             <td><%= users_list[i].username %></td>
-            <td>6969</td>
+            <td><%= users_list[i].rating %></td>
         </tr>
         <% } %>
     </tbody>

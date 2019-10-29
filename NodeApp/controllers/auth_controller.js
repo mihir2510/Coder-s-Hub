@@ -6,16 +6,18 @@ exports.fb_login = function(req, res) {
 };
 
 exports.fb_login_cb = function(req, res) {
-    passport.authenticate('facebook', { 
+    passport.authenticate('facebook', {
         successRedirect: '/problems',
-        failureRedirect: '/' 
+        failureRedirect: '/'
     });
 };
 
 exports.post_register = function(req, res) {
-    var acc = new Account({ 
-        username : req.body.username, 
-        email: req.body.email, 
+    var acc = new Account({
+        username : req.body.username,
+        email: req.body.email,
+        rating: 0,
+        problems_solved: {},
         permission: "user"});
     Account.register(acc, req.body.password, function(err, user) {
         if (err) {
@@ -37,7 +39,7 @@ exports.get_login = function(req, res) {
 
 exports.post_login = function(req, res) {
     passport.authenticate('local', function(err, user, info) {
-        if (err) { 
+        if (err) {
             return;
         }
         if (!user) {
