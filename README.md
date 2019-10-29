@@ -1,7 +1,7 @@
 <div align="center">
 	<h1>CodersHub 👨‍💻</h1>
 
-<!-- [![HitCount](http://hits.dwyl.io/mihir2510/Coder-s-Hub.svg)](http://hits.dwyl.io/mihir2510/Coder-s-Hub) -->
+[![HitCount](http://hits.dwyl.io/mihir2510/Coder-s-Hub.svg)](http://hits.dwyl.io/mihir2510/Coder-s-Hub)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 <br><br>
 [![made-with-javascript](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://www.javascript.org/)
