@@ -3,6 +3,7 @@ var Account = require('../models/account');
 exports.get_leaderboard = async function(req, res){
     console.log('User is',req.user);
     let users_list = await get_users();
+    users_list.sort((item) => (item.rating) ? -item.rating : 0);
     console.log('Users are',users_list);
     res.render('leaderboard',{user:req.user, users_list: users_list})
 }
