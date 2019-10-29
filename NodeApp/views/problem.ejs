@@ -22,8 +22,9 @@
     </head>
     <body>
         <nav class="navbar navbar-default navbar-expand-md justify-content-between">
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target=".dual-nav">
-                <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target=".dual-nav">
+
+                    <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse dual-nav w-100">
                 <ul class="nav navbar-nav">
@@ -102,7 +103,8 @@
                                 //myeditor.setOption("mode", language);
                             </script>
                             <br>
-                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <button type="submit            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target=".dual-nav">
+                                    " class="btn btn-secondary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -157,17 +159,19 @@
                         <% } %>
                         <br>Result: <%= result %>
                     </div>
-                    <div class="modal-footer">
+                   <!--
+                       <div class="modal-footer">
                             <% if (accepted) { %>
                                 <a role="button" class="btn btn-tweet" href="https://twitter.com/intent/tweet?text=I've passed the programming challenge [<%= content.name %>] in CodersHub, an open source programming judge. Let's try to solve this problem at https://CodersHub.herokuapp.com/problems/<%= content.pid %>" target="_blank"><i class="fab fa-twitter"></i> Tweet</a>
                             <% } %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
+                   --> 
                 </div>
             </div>
         </div>
         <footer>
-            <p>© 2019 CodersHub<br>If you have any suggestions, raise an issue <a href="https://github.com/mihir2510/Coder-s-Hub/issues">here.</a></p>
+            <p>© 2019 Coder'sHub<br>If you have any suggestions, raise an issue <a href="https://github.com/mihir2510/Coder-s-Hub/issues">here.</a></p>
         </footer>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
