@@ -113,8 +113,8 @@ exports.update_avail = function(req, res) {
             console.log('For i=',i,' avail is',is_avail.has(i));
             await Problem.update({_id: problem_res[i]._id}, {avail: problem_res[i].avail}, function(err, up_res) {
                 if (err) console.log(err);
-                console.log('new arr is',up_res);
-                console.log('\n\n\n\n\n\n');
+                // console.log('new arr is',up_res);
+                // console.log('\n\n\n\n\n\n');
             });
         }
         res.redirect('/admin');
