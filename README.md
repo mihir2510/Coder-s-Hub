@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 	<h1>CodersHub 👨‍💻</h1>
 
 [![HitCount](http://hits.dwyl.io/mihir2510/Coder-s-Hub.svg)](http://hits.dwyl.io/mihir2510/Coder-s-Hub)
@@ -46,11 +46,11 @@
 
 <h3 > Screenshots  </h3>
 <br>
-<img src="assets/homepage.jpeg" width=700px>
+<img src="assets/Home.PNG" width=700px>
 <br>
-<img src="assets/profile.jpeg" width=700px>
+<img src="assets/Problem.PNG" width=700px>
 <br>
-<img src="assets/forums.jpeg" width=700px>
+<img src="assets/IDE.PNG" width=700px>
 <br>
 
 </div>
@@ -66,7 +66,7 @@
 ### To run the project:
 ```
 git clone -b <name-of-branch> https://github.com/mihir2510/Coder-s-Hub.git
-cd Coder-s-Hub
+cd Coder-s-Hub/NodeApp
 npm install
 npm start
 ```
