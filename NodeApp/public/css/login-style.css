@@ -126,13 +126,13 @@ footer {
 @media only screen and (max-width: 865px) {
 .login-block{
     height: 50%;
-    width: 40%;
+    width: 50%;
 }
 }
 
 @media only screen and (max-width: 670px) {
     .login-block{
         height: 50%;
-        width: 40%;
+        width: 50%;
     }
 }
