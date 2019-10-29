@@ -27,13 +27,13 @@
                         <a class="nav-link" href="/problems" style="color: black">Problems</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/aboutus" style="color: black">About Us</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/custom" style="color: black">IDE</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/leaderboard" style="color: black">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus" style="color: black">AboutUs</a>
                     </li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
                         <% if (user) { %>
-                            <a class="nav-link" href="/logout" style="color: black"><%= user.username %> <i class="fas fa-sign-out-alt"></i></a>
+                            <a class="nav-link" href="/logout" style="color: black"><%= user.username %> <i class="fas fa-sign-out-alt"></i>Logout</a>
                         <% } else { %>
                             <a class="nav-link" href="/login" style="color: black">Login <i class="fas fa-sign-in-alt"></i></a>
                         <% } %>
