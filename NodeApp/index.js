@@ -49,6 +49,7 @@ app.use('/admin', admin_route);
 app.use('/problems', problem_route);
 app.use('/api', api_route);
 app.use('/leaderboard', leaderboard_route);
+app.use('/aboutus', aboutus_route);
 
 var server = app.listen(server_port, function(){
     console.log('Listening on port %d',server_port);
