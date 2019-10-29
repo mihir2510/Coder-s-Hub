@@ -31,7 +31,7 @@
                         <a class="nav-link" href="/custom">IDE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">LeaderBoard</a>
+                        <a class="nav-link" href="#">Leaderboard</a>
                     </li>
                 </ul>
             </div>
@@ -49,32 +49,24 @@
             </div>
         </nav>
 <div class="container">
-  <h2>Condensed Table</h2>
-  <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>
+  <h2>Leaderboard</h2>
+  <!-- <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p> -->
   <table class="table table-condensed">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>#</th>
+        <th>Username</th>
+        <th>Rating</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+        <% for(let i=0; i < users_list.length; i++) { %>
+        <tr>
+            <td><%= i+1 %></td>
+            <td><%= users_list[i].username %></td>
+            <td><%= users_list[i].rating %></td>
+        </tr>
+        <% } %>
     </tbody>
   </table>
 </div>

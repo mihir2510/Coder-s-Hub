@@ -5,6 +5,7 @@ var Problem = require('../models/problem');
 var Testcase = require('../models/testcase');
 var Submission = require('../models/submission');
 var Announcement = require('../models/announcement');
+var Account = require('../models/account');
 var syncRequest = require('sync-request');
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -24,7 +25,7 @@ const requestmap = function(item) {
 
 
 exports.get_all_problem = function(req, res) {
-    Problem.find({avail: true}, function(err,problem) {
+    Problem.find({avail: true}, function(err, problem) {
         if (err) {
             console.log(err);
             return
@@ -96,6 +97,35 @@ exports.post_submission = function(req, res, next) {
         });
         new_submission.save(function(err) {
             if (err) console.log(err);
+        });
+
+        if(result === 'P'.repeat(data.length))
+        Problem.find({pid: req.params.pid}, function(err, res){
+            if(err){
+                console.log(err);
+            }
+            let diff = res.difficulty;
+            let score = 10<<(diff+1);
+            let solved_ones = {}
+            if(req.user){
+                Account.findOne({username: req.user.username},
+                    function (err,res){
+                        if(err){
+                            console.log(err);
+                        }
+                        solved_ones = res.problems_solved;
+                    }
+                );
+                if(!solved_ones[pid]){
+                    solved_ones[pid] = diff;
+                    Account.findOneAndUpdate({username: req.user.username},
+                        {
+                            problems_solved: solved_ones,
+                            $inc: { rating:score }
+                        },
+                        (err,res)=>console.log('Err:',err,'Res:',res))
+                }
+            }
         });
         if (score === data.length) {
             Problem.findOneAndUpdate({pid : req.params.pid}, {$inc : {solved : 1}}, function(err){
@@ -184,6 +214,39 @@ exports.post_submission_live_editor = function(req, res, next) {
         new_submission.save(function(err) {
             if (err) console.log(err);
         });
+
+        if(result === 'P'.repeat(data.length)){
+            Problem.find({pid: req.params.pid}, function(err, res){
+                if(err){
+                    console.log(err);
+                }
+                // console.log('result is',res);
+                let diff = res[0].difficulty;
+                let score = 10<<(diff+1);
+                console.log('diff,score is',diff,score);
+                let solved_ones = {}
+                if(req.user){
+                    Account.findOne({username: req.user.username},
+                        function (err,res){
+                            if(err){
+                                console.log(err);
+                            }
+                            solved_ones = res.problems_solved;
+                        }
+                    );
+                    if(solved_ones[req.params.pid]!==undefined){
+                        solved_ones[req.params.pid] = diff;
+                        Account.findOneAndUpdate({username: req.user.username},
+                            {
+                                problems_solved: solved_ones,
+                                $inc: { rating:score }
+                            },
+                            (err,res)=>console.log('Err:',err,'Res:',res))
+                    }
+                }
+            });
+        }
+
         if (score === data.length) {
             Problem.findOneAndUpdate({pid : req.params.pid}, {$inc : {solved : 1}}, function(err){
                 if(err) console.log(err);

@@ -73,7 +73,7 @@
                         <form method="post" action="/problems/<%= content.pid %>/live">
                             <select class="form-control-sm" name="lang" id="submit-lang-live">
                                 <% for(var i=0;i<langlist.length;i++) { %>
-                                    <option value="<%= langlist[i].id %>" 
+                                    <option value="<%= langlist[i].id %>"
                                         <% if(submitLang == langlist[i].id || (submitLang == null && langlist[i].id == 10)) { %>
                                             selected="selected"
                                         <% } %>
@@ -103,8 +103,7 @@
                                 //myeditor.setOption("mode", language);
                             </script>
                             <br>
-                            <button type="submit            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target=".dual-nav">
-                                    " class="btn btn-secondary">Submit</button>
+                            <button type="submit" class="btn btn-secondary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -124,7 +123,7 @@
                                     </select>
                                     <input type="file" name="submit-file" id="select-file">
                                     <button type="submit" class="btn btn-secondary" id="submit-button">Submit</button>
-                                </form>  
+                                </form>
                             </div>
                     </div>
                     <br>
@@ -166,7 +165,7 @@
                             <% } %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                   --> 
+                   -->
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ exports.get_admin = function(req, res) {
     if (req.user && req.user.permission === 'admin') {
         Submission.find({}, function(err, sub_res) {
             Problem.find({}, function(err, prob_res) {
-                console.log('User is',req.user, 'submission is',sub_res,'problem is',prob_res);
+                // console.log('User is',req.user, 'submission is',sub_res,'problem is',prob_res);
                 res.render('admin', {user: req.user, submission: sub_res, problem: prob_res});
             })
         })
@@ -105,11 +105,16 @@ exports.get_submission = function(req, res) {
 exports.update_avail = function(req, res) {
     //console.log(req.body.avail);
     const is_avail = new Set(req.body.avail.map(function(num) { return parseInt(num,10); }));
-    Problem.find({},function(err, problem_res) {
+    console.log('is_avail is',is_avail);
+    Problem.find({}, async function(err, problem_res) {
+        // console.log('problem_res is',problem_res);
         for (var i=0;i<problem_res.length;i++) {
-            problem_res[i].avail = is_avail.has(i);
-            Problem.update({_id: problem_res[i]._id}, {avail: problem_res[i].avail}, function(err, up_res) {
+            problem_res[i].avail = is_avail.has(i+1);
+            console.log('For i=',i,' avail is',is_avail.has(i));
+            await Problem.update({_id: problem_res[i]._id}, {avail: problem_res[i].avail}, function(err, up_res) {
                 if (err) console.log(err);
+                console.log('new arr is',up_res);
+                console.log('\n\n\n\n\n\n');
             });
         }
         res.redirect('/admin');
