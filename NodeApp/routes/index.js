@@ -22,9 +22,9 @@ router.get('/register', function(req, res) {
 
 router.post('/register', auth_controller.post_register);
 
-router.get('/auth/facebook', auth_controller.fb_login);
+//router.get('/auth/facebook', auth_controller.fb_login);
 
-router.get('/auth/facebook/callback', auth_controller.fb_login_cb);
+//router.get('/auth/facebook/callback', auth_controller.fb_login_cb);
 
 router.get('/custom', problem_controller.get_custom_test);
 
