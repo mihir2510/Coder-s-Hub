@@ -3,7 +3,7 @@
 :root {
 /*primary*/
     --plighter: #ffd368;
-     --pmedium: #ffc937; 
+     --pmedium: #ffc937;
     /*--pmedium: #ffeead;*/
     --pdarker: #cf9b18;
     /*secondary*/
@@ -19,7 +19,7 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 0 0 100px;
-    
+
 }
 
 .homepage {
@@ -80,7 +80,7 @@ footer {
     background-repeat: no-repeat;
     font-size:2.2vh;
     padding: 10px;
-    
+
 }
 
 .navbar-default .navbar-brand {
@@ -155,11 +155,11 @@ footer {
     font-size: 1.2vw;
 
     overflow: hidden; /* Ensures the content is not revealed until the animation */
- 
+
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
-  animation: 
+  animation:
     typing 5s steps(40, end),
     blink-caret 50s step-end infinite;
     animation-iteration-count: infinite;
@@ -170,11 +170,11 @@ footer {
     from { width: 0 }
     to { width: 100% }
   }
-  
+
   /* The typewriter cursor effect */
   @keyframes blink-caret {
     from, to { border-color: transparent }
-    
+
   }
 
 
@@ -453,11 +453,11 @@ footer {
     outline: none;
     color: #9DBFAF;
   }
-  
+
   .searchTerm:focus{
     color: #00B4CC;
   }
-  
+
   .searchButton {
     width: 40px;
     height: 36px;
@@ -471,7 +471,7 @@ footer {
   } <footer style="margin-top: 30%;margin-left:45%;font-size: 1.2rem;color: white;position:fixed;">
                 <p>© 2019 Coder'sHub</p>
             </footer>
-  
+
   Resize the wrap to see the search bar change!
   .wrap{
     width: 30%;
