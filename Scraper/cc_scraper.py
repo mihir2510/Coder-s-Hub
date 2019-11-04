@@ -8,6 +8,7 @@ from json import dump
 options = Options()
 options.add_argument("--headless")
 
+
 url = 'https://www.codechef.com/'
 levels = ['easy','medium','hard']
 questions = {}
