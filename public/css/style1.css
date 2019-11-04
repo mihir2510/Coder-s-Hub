@@ -32,7 +32,7 @@ table {
   border-spacing: 0;
 }
 
-/*-- start editing from here --*/
+
 a {
   text-decoration: none;
 }
@@ -41,70 +41,66 @@ a {
   text-align: right;
 }
 
-/* text align right */
 .txt-lt {
   text-align: left;
 }
 
-/* text align left */
 .txt-center {
   text-align: center;
 }
 
-/* text align center */
+
 .float-rt {
   float: right;
 }
 
-/* float right */
+
 .float-lt {
   float: left;
 }
 
-/* float left */
 .clear {
   clear: both;
 }
 
-/* clear float */
+
 .pos-relative {
   position: relative;
 }
 
-/* Position Relative */
 .pos-absolute {
   position: absolute;
 }
 
-/* Position Absolute */
+
 .vertical-base {
   vertical-align: baseline;
 }
 
-/* vertical align baseline */
 .vertical-top {
   vertical-align: top;
 }
 
-/* vertical align top */
+
 nav.vertical ul li {
   display: block;
 }
 
-/* vertical menu */
+
 nav.horizontal ul li {
   display: inline-block;
 }
 
-/* horizontal menu */
+
 img {
   max-width: 100%;
 }
 
 /*-- end reset --*/
+
 body {
   background: #203A43;
-  /* fallback for old browsers */
+
   background: -webkit-linear-gradient(to top, #0F2027, #2C5364);
   background: -moz-linear-gradient(to top, #0F2027, #2C5364);
   background: -o-linear-gradient(to top, #0F2027, #2C5364);
@@ -124,7 +120,7 @@ h1 {
   font-family: 'Roboto', sans-serif;
 }
 
-/*-- main --*/
+
 .main-w3layouts {
   padding: 3em 0 1em;
 }
@@ -187,12 +183,10 @@ input.email, input.text.w3lpass {
 }
 
 :-moz-placeholder {
-  /* Firefox 18- */
   color: #fff;
 }
 
 ::-moz-placeholder {
-  /* Firefox 19+ */
   color: #fff;
 }
 
@@ -243,7 +237,7 @@ input[type="submit"]:hover {
   color: #386473;
 }
 
-/*-- //main --*/
+/*-- main --*/
 /*-- checkbox --*/
 .wthree-text label {
   font-size: 0.9em;
@@ -320,8 +314,6 @@ input.checkbox:checked:after {
   }
 }
 
-/*-- //checkbox --*/
-/*-- copyright --*/
 .colorlibcopy-agile {
   margin: 2em 0 1em;
   text-align: center;
@@ -348,7 +340,7 @@ input.checkbox:checked:after {
   color: #000;
 }
 
-/*-- //copyright --*/
+
 .wrapper {
   position: relative;
   overflow: hidden;
