@@ -2,5 +2,5 @@ wtenv/
 .vscode/
 .DS_Store
 node_modules/
-config.json
 tmp/
+Database/

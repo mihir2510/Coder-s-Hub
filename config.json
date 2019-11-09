@@ -1,0 +1,8 @@
+{
+    "server_port": 8080,
+    "using_connection_string": true,
+    "connection_string": "CONNECTION_STRING",
+    "db_user": "DATABASE_USERNAME",
+    "db_pass": "DATABASE_PASSWORD",
+    "session_secret": "SESSION_SECRET"
+}
