@@ -24,6 +24,7 @@
 
 ------------------------------------------
 #### Future Scope:
+
 * Add contests.
 
 ------------------------------------------
@@ -60,7 +61,7 @@
 - Frontend: HTML/CSS/JS, jQuery, Bootstrap4, EJS (templating engine)
 - Backend: JavaScript (NodeJS)
 - Database: MongoDB Atlas
-- APIs: Judge0 API
+- APIs: [Judge0 API](https://api.judge0.com/)
 
 ------------------------------------------
 ### To run the project:
@@ -70,16 +71,32 @@ cd Coder-s-Hub/NodeApp
 npm install
 npm start
 ```
+------------------------------------------
+
+### Credits :
+
+This project was inspired by [ngrader](https://github.com/nisaruj/ngrader).
 
 ------------------------------------------
 
+### Open Source Contribution :
+
+- Fixed the code and bugs based on the latest API version.
+- Created working and effecient WebApp.
+- Additional Feature of Leaderboard added.
+- Fixed homepage responsiveness.
+- Scrapped problem statements to add into website.
+- Made changes as per requirements.
+------------------------------------------
+
 ### Note:
+
 - This project was created for our `Web Technology Lab`
 
 ------------------------------------------
 
 <div align="center">
 
-Made with :heart: by <a href="https://github.com/KaustubhDamania">Kaustubh Damania</a> and <a href="https://github.com/mihir2510">Mihir Gada</a>
+Made with :heart:   by <a href="https://github.com/KaustubhDamania">Kaustubh Damania</a> and <a href="https://github.com/mihir2510">Mihir Gada</a>
 
 </div>
