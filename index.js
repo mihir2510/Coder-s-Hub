@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy  = require('passport-local').Strategy;
-
 var server_port = process.env.PORT || appConfig.server_port;
 var session_secret = process.env.SESSION_SECRET || appConfig.session_secret;
 var db_user = process.env.DB_USER || appConfig.db_user;
@@ -43,14 +42,18 @@ var admin_route = require('./routes/admin');
 var problem_route = require('./routes/problem');
 var api_route = require('./routes/api');
 var leaderboard_route = require('./routes/leaderboard');
+var leaderboard_route_json = require('./routes/leaderboard');
 var aboutus_route = require('./routes/aboutus');
+var rss_route = require('./routes/rss');
 
 app.use('/', index_route);
 app.use('/admin', admin_route);
 app.use('/problems', problem_route);
 app.use('/api', api_route);
-app.use('/leaderboard', leaderboard_route);
+app.use('/leaderboard', leaderboard_route); // end user
 app.use('/aboutus', aboutus_route);
+app.use('/leaderboardRSS', rss_route); // xml
+
 
 var server = app.listen(server_port, function(){
     console.log('Listening on port %d',server_port);

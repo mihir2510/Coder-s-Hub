@@ -1,8 +1,9 @@
 {
     "server_port": 8080,
     "using_connection_string": true,
-    "connection_string": "CONNECTION_STRING",
-    "db_user": "DATABASE_USERNAME",
-    "db_pass": "DATABASE_PASSWORD",
-    "session_secret": "SESSION_SECRET"
+    "connection_string": "mongodb+srv://mihir:123@cluster0-bre2f.mongodb.net/test?retryWrites=true&w=majority",
+    "db_user": "mihir",
+    "db_pass": "123",
+    "session_secret": "coder"
 }
+
