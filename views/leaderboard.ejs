@@ -59,14 +59,14 @@
         <th>Rating</th>
       </tr>
     </thead>
-    <tbody>
-        <% for(let i=0; i < users_list.length; i++) { %>
+    <tbody id="leaderboard">
+        <!-- <% for(let i=0; i < users_list.length; i++) { %>
         <tr>
             <td><%= i+1 %></td>
             <td><%= users_list[i].username %></td>
             <td><%= users_list[i].rating %></td>
         </tr>
-        <% } %>
+        <% } %> -->
     </tbody>
   </table>
 </div>
@@ -81,6 +81,39 @@
             <p>© 2019 CodersHub</p>
         </footer>
     </body>
+    <script>
+        const leaderboard = document.getElementById('leaderboard')
+        async function fetchXML(url){
+            let res = await fetch(url)
+            res = await res.text()
+            console.log(res)
+            if (window.DOMParser){
+                parser=new DOMParser();
+                xmlDoc=parser.parseFromString(res,"text/xml");
+            }
+            else { // Internet Explorer
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async=false;
+                xmlDoc.loadXML(res);
+            }
+            let items = xmlDoc.getElementsByTagName("items")[0]
+            console.log(items)
+            for(let i=0; i<items.childNodes.length; i+=2){
+                let id = Math.floor(i/2) + 1
+                let username = items.childNodes[i].innerHTML
+                let rating = items.childNodes[i+1].innerHTML
+                console.log(id, username, rating)
+                leaderboard.innerHTML += `<tr>
+                    <td>${id}</td>
+                    <td>${username}</td>
+                    <td>${rating}</td>
+                </tr>`
+            }
+            // return res
+
+        }
+        fetchXML('/leaderboardRSS')
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.clou dflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
